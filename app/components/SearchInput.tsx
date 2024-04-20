@@ -1,12 +1,20 @@
 import React, { useContext } from "react";
+import { Context } from "@/context/context";
+import { AiOutlineLoading } from "react-icons/ai";
+import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { CiSearch } from "react-icons/ci";
-import { Context } from "@/context/context";
-import { Button } from "@/components/ui/button";
 
 export default function SearchInput() {
-  const { query, setQuery, handleInputValue, handleSearch } =
-    useContext(Context);
+  const {
+    query,
+    setQuery,
+    handleInputValue,
+    handleSearch,
+    relatedWords,
+    isShowTypes,
+  } = useContext(Context);
+
   return (
     <form
       onSubmit={handleSearch}
@@ -21,14 +29,17 @@ export default function SearchInput() {
           type="text"
           placeholder="Search images..."
         />
-        {query ? (
+        {isShowTypes ? (
           <ul className="absolute w-full left-0 z-50 transition-all duration-200 top-[50px] max-h-[500px] bg-white rounded border flex flex-col">
-            <li
-              onClick={(e) => setQuery(e.currentTarget.innerText)}
-              className="hover:bg-gray-100 p-2 cursor-pointer"
-            >
-              Lino
-            </li>
+            {relatedWords.map((word) => (
+              <li
+                key={word}
+                onClick={() => setQuery(word)}
+                className="hover:bg-gray-100 p-2 cursor-pointer"
+              >
+                {word}
+              </li>
+            ))}
           </ul>
         ) : (
           ""

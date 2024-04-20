@@ -1,22 +1,19 @@
 import React, { useContext } from "react";
 import { Context } from "@/context/context";
+import { AiOutlineLoading } from "react-icons/ai";
 
 export default function ImageArea() {
   const { imageDatas } = useContext(Context);
 
-  if (!imageDatas) {
-    return <div>Loading...</div>;
-  }
-
-  //   <img
-  //               className="rounded cursor-pointer"
-  //               key={image.id}
-  //               src={image.urls.small}
-  //               alt=""
-  //             />
   return (
-    <div className="w-full mt-10 border grid grid-cols-3 gap-5  border-t border-t-gray-100 p-10">
-      {imageDatas ? (
+    <div
+      className={`w-full mt-10 ${
+        imageDatas.length !== 0
+          ? "grid grid-cols-3 gap-5"
+          : "flex items-center justify-center"
+      }  border-t border-t-gray-100 p-10`}
+    >
+      {imageDatas.length !== 0 ? (
         imageDatas.map(
           (image: { urls: any; id: React.Key | null | undefined }) => (
             <div
@@ -32,7 +29,9 @@ export default function ImageArea() {
           )
         )
       ) : (
-        <p>No images found</p>
+        <div className="w-full flex items-center justify-center h-full ">
+          <p>No images found</p>
+        </div>
       )}
       <div id="observer" />
     </div>
