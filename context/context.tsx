@@ -80,20 +80,27 @@ const ContextProvider: React.FC<{ children: React.ReactNode }> = ({
   };
 
   useEffect(() => {
-    observer.current = new IntersectionObserver((entries) => {
+    let observerInstance: IntersectionObserver | null = null;
+
+    const handleIntersection = (entries: IntersectionObserverEntry[]) => {
       if (entries[0].isIntersecting && !loading && page < totalPages) {
         setLoading(true);
         setPage((prevPage) => prevPage + 1);
       }
-    });
+    };
 
-    if (observer.current && imageDatas.length > 0) {
-      observer.current.observe(document.querySelector("#observer") as Element);
+    if (typeof document !== "undefined") {
+      observerInstance = new IntersectionObserver(handleIntersection);
+      if (observerInstance && imageDatas.length > 0) {
+        observerInstance.observe(
+          document.querySelector("#observer") as Element
+        );
+      }
     }
 
     return () => {
-      if (observer.current) {
-        observer.current.disconnect();
+      if (observerInstance) {
+        observerInstance.disconnect();
       }
     };
   }, [imageDatas, loading, page, totalPages]);
