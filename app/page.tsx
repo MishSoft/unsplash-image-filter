@@ -10,14 +10,16 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 export default function Home() {
   return (
     <ContextProvider>
-      <BrowserRouter>
-        <Header />
-        <TopBar />
-        <Routes>
-          <Route path="/" element={<ImageArea />} />
-          <Route path="/history" element={<History />} />
-        </Routes>
-      </BrowserRouter>
+      <div className="w-full overflow-x-hidden">
+        <BrowserRouter>
+          <Header />
+          <TopBar />
+          <Routes>
+            <Route path="/" element={<ImageArea />} />
+            <Route path="/history" element={<History />} />
+          </Routes>
+        </BrowserRouter>
+      </div>
     </ContextProvider>
   );
 }

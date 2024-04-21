@@ -9,22 +9,18 @@ export default function ImageArea() {
     <div
       className={`w-full mt-10 ${
         imageDatas.length !== 0
-          ? "grid grid-cols-3 gap-5"
+          ? "pb-10 gap-5 sm:columns-4 sm:space-y-3 border sm:block flex flex-wrap items-center justify-center"
           : "flex items-center justify-center"
       }  border-t border-t-gray-100 p-10`}
     >
       {imageDatas.length !== 0 ? (
         imageDatas.map(
           (image: { urls: any; id: React.Key | null | undefined }) => (
-            <div
-              className="w-full h-[300px] rounded cursor-pointer hover:transform hover:scale-105 transition-all duration-200 hover:shadow"
+            <img
               key={image.id}
-              style={{
-                backgroundImage: `url(${image.urls.small})`,
-                backgroundPosition: "center",
-                backgroundRepeat: "no-repeat",
-                backgroundSize: "cover",
-              }}
+              className="rounded cursor-pointer hover:transform hover:scale-105 transition-all duration-200 hover:shadow"
+              src={image.urls.small}
+              alt=""
             />
           )
         )

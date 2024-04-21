@@ -14,7 +14,8 @@ import {
 import { Context } from "@/context/context";
 
 export default function History() {
-  const { saveWords } = useContext(Context);
+  const { saveWords, handleRemoveSaveWords } = useContext(Context);
+
   return (
     <div className="w-full mt-10 flex items-center justify-center  border-t border-t-gray-100 p-10">
       <Table>
@@ -28,10 +29,13 @@ export default function History() {
         <TableBody>
           {saveWords.map((item, index) => (
             <TableRow key={index}>
-              <TableCell>At 20:39 PM</TableCell>
-              <TableCell>{item}</TableCell>
+              <TableCell>{item.time}</TableCell>
+              <TableCell>{item.word}</TableCell>
               <TableCell>
-                <Button className="bg-red-500 rounded text-white hover:bg-red-300 transition-colors duration-200">
+                <Button
+                  onClick={() => handleRemoveSaveWords(item.word)}
+                  className="bg-red-500 rounded text-white hover:bg-red-300 transition-colors duration-200"
+                >
                   X
                 </Button>
               </TableCell>
