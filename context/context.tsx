@@ -1,3 +1,4 @@
+"use client";
 import React, { useEffect, useRef, useState } from "react";
 import fuzzysort from "fuzzysort";
 
@@ -63,7 +64,7 @@ const ContextProvider: React.FC<{ children: React.ReactNode }> = ({
         hour: "2-digit",
         minute: "2-digit",
       });
-      setSaveWords([...saveWords, { word: query, time }]); // Use saveWords directly
+      setSaveWords([...saveWords, { word: query, time }]);
       const saveWordsString = JSON.stringify([
         ...saveWords,
         { word: query, time },
@@ -103,7 +104,7 @@ const ContextProvider: React.FC<{ children: React.ReactNode }> = ({
         observerInstance.disconnect();
       }
     };
-  }, [imageDatas, loading, page, totalPages]);
+  }, []); // Empty dependency array ensures this effect only runs once on mount
 
   useEffect(() => {
     if (!loading || page > totalPages) return;
