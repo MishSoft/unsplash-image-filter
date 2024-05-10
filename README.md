@@ -1,26 +1,31 @@
-Unsplash Image Gallery App
-This is a React application that allows users to search for and view images from the Unsplash API. Users can search for images by entering keywords, and the app will display a gallery of images related to the search query.
+Unsplash Image Search
+Description
+This is a simple image search application built with React and Next.js, using the Unsplash API to fetch images based on user input. Users can search for images, view them in a grid layout, and access their search history.
 
 Features
 Search for images using keywords
-Infinite scroll to load more images
-Typeahead feature for probable search words
-Responsive design for various screen sizes
+View image results in a grid layout
+Save search history
+Navigate between home and history pages
 Technologies Used
 React
-TypeScript
+Next.js
+Tailwind CSS
 Unsplash API
 Installation
-Clone the repository: git clone https://github.com/your-username/unsplash-image-gallery.git
+Clone the repository
 Install dependencies: npm install
-Create a .env file in the root directory with your Unsplash API access key: REACT_APP_UNSPLASH_API_KEY=your_api_key_here
-Start the development server: npm start
+Set up environment variables:
+Create a .env.local file in the root directory
+Add your Unsplash API access key: NEXT_PUBLIC_UNSPLASH_ACCESS_KEY=your_access_key_here
+Start the development server: npm run dev
 Usage
-Enter a search query in the search bar and press Enter or click the Search button.
-Scroll down to load more images.
-Click on an image to view it in full size.
-Contributing
-Contributions are welcome! Fork the repository and submit a pull request with your changes.
-
-License
-This project is licensed under the MIT License - see the LICENSE file for details.
+Visit the home page to search for images
+Use the search input to enter keywords and press "Enter" or click the "Search" button
+View image results in the grid layout
+Click on the "History" link in the top bar to view saved search history
+Credits
+React
+Next.js
+Tailwind CSS
+Unsplash API
